@@ -1,0 +1,139 @@
+    
+	{% extends 'portfolio/base.html' %}
+	{% load static %}
+	{% block content %}
+	
+<main>
+  <div class="px-4 py-5 my-5 mt-auto orange text-center">
+    <img class="d-block mx-auto mb-4 rounded-pill" src="{% static 'portfolio/logo.png'%}" alt="" width="700" height="500">
+    
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Welcome! We create beautiful, enticing, engaging, and usable websites for all various purposes!</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#contact" class="btn btn-info btn-lg">Contact Us</button>
+        
+      </div>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="container px-4 py-5" id="featured-3">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+	
+	{% for service in services %}
+      <div class="feature col">
+        <!--<div class="feature-icon">-->
+          <img src="{{service.image.url}}" width = "100%" height = "225px" alt="service">
+        <!--</div>-->
+        <h2>{{service.title}}</h2>
+        <p>{{service.description}}</p>
+        
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+  <div class="album py-5 orange">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+	  	{%for project in projects%}
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <img width = "100%" height = "225px" src = "{{project.image.url}}">
+
+            <div class="card-body">
+			 <h2>{{project.title}}</h2>
+              <p class="card-text">
+			    {{project.description}}
+	             
+				 
+			  </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+				{%if project.url%}
+                  <button type="button" href="{{project.url}}" class="btn-lg btn-primary">View</button>
+				  
+				 {%endif%}
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+		{%endfor%}
+        <!---->
+      </div>
+    </div>
+  </div>
+
+
+ <div class="container skills mt-3">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+	{%for skill in skills%}
+      <div class="col-lg-4">
+        <img width = "300px" height = "300px" class = "img-fluid" src = "{{skill.image.url}}">
+
+        <h2>{{skill.title}}</h2>
+        <p>{{skill.description}}</p>
+		{%if skill.url%}
+        <p><a class="btn btn-secondary" href="{{skill.url}}" target = "_blank">View details &raquo;</a></p>
+		{% endif %}
+      </div><!-- /.col-lg-4 -->
+     {%endfor%} 
+    </div><!-- /.row -->
+</div><!--end of marketing container-->
+</main>
+<!--end-->
+<div class="container-fluid footer-section">
+		<div class="row">
+			<div class="col-md-4">
+				<h6>Copyright &copy; 2020 My Creative Pages</h6>
+			</div>
+			<div class="col-md-8">
+			<a href="https://m.facebook.com/My-Creative-Pages-112841977085242/" target = "blank"><span class="link"><strong>Facebook</strong></span></a>
+			<a href="https://instagram.com/mycreativepage8286?igshid=1374csnzyjnnq" target = "blank"><span class="link"><strong>Instagram</strong></span></a>
+			<a href="mailto:migep1015@gmail.com" target = "blank"><span class="link"><strong>Email</strong></span></a>
+			<a href="
+https://www.behance.net/mycreativepages
+" target = "blank"><span class="link"><strong>Behance</strong></span></a>
+		   </div>
+		</div>
+	</div>
+
+ <div class="modal" tabindex="-1" role="dialog" id = "contact">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">TO GET STARTED, YOU CAN CONTACT ME AT:</h5>
+        <button type="button" class="contact" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body row">
+	   <div class = "col-md-6">
+	   <img src = "{% static 'portfolio/logo.png' %}" style = "width:125px; height:125px; margin-left:25%;">
+	   </div>
+        <div class = "col-md-6"  style = "border-left:1px solid #ccc;">
+          <h5>Phone #:</h5>
+         <p><i>(858)353-9539</i></p>
+        
+      <h5>Email:</h5>
+      <p><i>micgep1015@gmail.com</i></p></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock%}
+ 
